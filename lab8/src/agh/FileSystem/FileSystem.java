@@ -16,7 +16,7 @@ public class FileSystem {
                 line = keyboard.nextLine();
             }
             parser.loadFile();
-            parser.loadIntoObjects();
+            parser.view();
 
 
 

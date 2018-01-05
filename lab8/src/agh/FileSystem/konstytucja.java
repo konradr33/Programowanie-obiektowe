@@ -43,12 +43,12 @@ public class Konstytucja implements FileToRead  {
         }
 
 
-        for(int i=0;i<content.size();i++){
+        /*for(int i=0;i<content.size();i++){
             for(int j=0;j<content.get(i).length;j++){
                 System.out.print(content.get(i)[j]+" ");
             }
             System.out.print("\n");
-        }
+        }*/
     }
 
     public static boolean isUpper(String s) {
@@ -60,67 +60,85 @@ public class Konstytucja implements FileToRead  {
     }
 
 
-    public void loadIntoObjects(){
+    public void loadIntoObjects() throws NumberFormatException {
         Node temp=new Node();
         Node temp_roz=temp;
         Node temp_art=temp;
         Node temp_ust=temp;
+        Node temp_pkt=temp;
 
         rozdzialy.add(temp_roz);
+        temp_roz.setID(1);
         for(int i=0;i<content.size();i++){
             if(content.get(i)[0].equals("Rozdział")){
                 temp=new Node();
                 temp.addLine(content.get(i));
                 temp_roz=temp;
+                temp_roz.setID(temp.getID()+1);
+                rozdzialy.add(temp_roz);
                 while(isUpper(content.get(i+1)[0])){
                     i++;
-                    temp_roz.addDescribtion(content.get(i));
+                    temp_roz.addLine(content.get(i));
+                }
+            }
+            else if(isUpper(content.get(i)[0])){
+                temp=new Node();
+                temp.addLine(content.get(i));
+                temp.setID(temp_roz.getID());
+                temp_roz=temp;
+                rozdzialy.add(temp_roz);
+                while(isUpper(content.get(i+1)[0])){
+                    i++;
+                    temp_roz.addLine(content.get(i));
                 }
             }
             else if(content.get(i)[0].equals("Art.")){
                 temp=new Node();
+                temp_roz.addChild(temp);
+                temp.setID(Integer.parseInt(content.get(i)[1].substring(0,content.get(i)[1].length()-2)));
+                temp.addLine(content.get(i));
                 temp_art=temp;
-                temp_roz.addChild(temp_art);
-                temp_art.setID(Integer.parseInt(content.get(i)[1].substring(0,content.get(i)[1].length()-2)));
-                temp_art.addLine(content.get(i));
-                int x=content.get(i)[0].length()-1;
-                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || content.get(i+1)[0].substring(x,x).equals(".") )){
+                artykuly.add(temp_art);
+                int x=content.get(i+1)[0].length()-1;
+                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || content.get(i+1)[0].substring(x,x).equals(".") || content.get(i+1)[0].substring(x,x).equals(")") )){
                     i++;
                     temp_art.addLine(content.get(i));
                 }
             }
-            else if(Character.isDigit(content.get(i)[0].toCharArray()) && content.get(i+1)[0].substring(1,1).equals(".")){
+            else if(content.get(i)[0].substring (content.get(i)[0].length()-1,content.get(i)[0].length()-1).equals(".") && content.get(i).length>1 && Character.isDigit(content.get(i)[0].toCharArray()[0])){
                 temp=new Node();
-                temp_ust=temp;
-                temp_ust.addLine(content.get(i));
+                temp.addLine(content.get(i));
                 temp_art.addChild(temp_ust);
-                int x=content.get(i)[0].length()-1;
-                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || content.get(i+1)[0].substring(x,x).equals(")"))  ){
+                temp.setID(Integer.parseInt(content.get(i)[0].substring(0,content.get(i)[0].length()-2)));
+                temp_ust=temp;
+                ustepy.add(temp_ust);
+                int x=content.get(i+1)[0].length()-1;
+                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || content.get(i+1)[0].substring(x,x).equals(")")) || content.get(i+1)[0].substring(x,x).equals(")") ){
                     i++;
                     temp_ust.addLine(content.get(i));
                 }
             }
-            else if(Character.isDigit(content.get(i)[0].toCharArray()) && content.get(i+1)[0].substring(1,1).equals(")")){
+            else if(content.get(i)[0].substring(content.get(i)[0].length()-1,content.get(i)[0].length()-1).equals(")") && content.get(i).length>1 && Character.isDigit(content.get(i)[0].toCharArray()[0])){
                 temp=new Node();
-                temp_ust.addLine(content.get(i));
+                temp.addLine(content.get(i));
                 temp_ust.addChild(temp);
-                int x=content.get(i)[0].length()-1;
-                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || content.get(i+1)[0].substring(x,x).equals(")"))  ){
+                temp.setID(Integer.parseInt(content.get(i)[0].substring(0,content.get(i)[0].length()-2)));
+                int x=content.get(i+1)[0].length()-1;
+                while( !(content.get(i+1)[0].equals("Rozdział") || content.get(i+1)[0].equals("Art.") || (((content.get(i+1)[0].substring(x,x).equals(")")) || content.get(i+1)[0].substring(x,x).equals(")"))&& Character.isDigit(content.get(i)[0].toCharArray()[0]) )  )){
                     i++;
                     temp.addLine(content.get(i));
                 }
             }
+            else {temp.addLine(content.get(i));}
 
         }
 
     }
+    public void view_a(){
+        for(int i=0;i<rozdzialy.size();i++){
+            rozdzialy.get(i).view();
+        }
+    }
 
 
 }
-
-str.toCharArray())
-        {
-        if (!Character.isDigit(c)) return false;
-        }
-        return true;
-        }

@@ -117,9 +117,14 @@ public class Parser {
             file = new Uokik();
         }
         file.loadFile(fileName);
+        try {
+            file.loadIntoObjects();
+        }catch (NumberFormatException ex){
+                System.out.print(ex);
+        }
     }
 
+    public void view(){
 
-    public void loadIntoObjects() {
     }
 }
