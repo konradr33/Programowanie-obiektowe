@@ -25,10 +25,6 @@ public class FileSystem {
         } catch (FileNotFoundException ex){
             System.out.print(ex);
         }
-        finally {
-
-        }
-
     }
 }
 

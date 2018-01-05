@@ -3,10 +3,10 @@ import java.io.FileNotFoundException;
 
 public class Parser {
     private String fileName;
-    private WorkMode workMode =WorkMode.Content;
+    private WorkMode workMode=WorkMode.Content;
     private FileType fileType=null;
-    private DisplayMode displayMode;
-    private String arguments;
+    private DisplayMode displayMode=DisplayMode.artykul;
+    private String arguments="";
     private FileToRead file;
 
     public boolean parse(String[] args ) throws IllegalArgumentException{
@@ -57,31 +57,49 @@ public class Parser {
                     break;
 
                 case("-a"):
-                    if(this.contains(args,"-a")>0 || this.contains(args,"-r")==0 ) {
+                    if(this.contains(args,"-a")>1 ) {
                         throw new IllegalArgumentException(args[i] + " błędna składnia, wpisz -h aby uzyskać pomoc");
                     }
                     displayMode=DisplayMode.artykul;
+                    i++;
+                    arguments=arguments.concat(args[i]);
+                    while(!args[i].startsWith("-") && i<args.length-1){
+                        arguments=arguments.concat(" ");
+                        i++;
+                        arguments=arguments.concat(args[i]);
+                    }
+                    break;
 
                 case("-b"):
-                    if(this.contains(args,"-a")>0 || this.contains(args,"-r")==0 ){
+                    if(this.contains(args,"-b")>1 ){
                         throw  new IllegalArgumentException(args[i] + " błędna składnia, wpisz -h aby uzyskać pomoc");
                     }
                     displayMode=DisplayMode.specyficzne;
                     i++;
-                    arguments=args[i];
+                    arguments=arguments.concat(args[i]);
+                    while(!args[i].startsWith("-") && i<args.length-1){
+                        arguments=arguments.concat(" ");
+                        i++;
+                        arguments=arguments.concat(args[i]);
+                    }
                     break;
 
                 case("-c"):
-                    if(this.contains(args,"-a")>0 || this.contains(args,"-r")==0 ){
+                    if(this.contains(args,"-c")>1 ){
                         throw  new IllegalArgumentException(args[i] + " błędna składnia, wpisz -h aby uzyskać pomoc");
                     }
                     displayMode=DisplayMode.rozdzial;
                     i++;
-                    arguments=args[i];
+                    arguments=arguments.concat(args[i]);
+                    while(!args[i].startsWith("-") && i<args.length-1){
+                        arguments=arguments.concat(" ");
+                        i++;
+                        arguments=arguments.concat(args[i]);
+                    }
                     break;
 
                 case("-d"):
-                    if(this.contains(args,"-a")>0 || this.contains(args,"-r")==0 || fileType==FileType.konstytucja){
+                    if(this.contains(args,"-d")>1 || fileType==FileType.konstytucja){
                         throw  new IllegalArgumentException(args[i] + " błędna składnia, wpisz -h aby uzyskać pomoc");
                     }
                     displayMode=DisplayMode.dzial;
@@ -123,8 +141,40 @@ public class Parser {
                 System.out.print(ex);
         }
     }
+    public void view() throws IllegalArgumentException {
+        switch (workMode) {
+            case TableOfContent:
+                file.view_spis();
+                break;
+            case Content:
 
-    public void view(){
+                switch (displayMode) {
+                    case artykul:
+                        if(arguments.equals("")) {
+                            file.view_a();
+                        } else if (arguments.split("-").length == 1) {
+                            file.view_a(arguments);
+                        } else if (arguments.split("-").length == 2) {
+                            String[] a = arguments.split("-");
+                            file.view_a(a[0], a[1]);
+                        }
+                        break;
 
+                    case specyficzne:
+                        file.view_b();
+                        break;
+                    case rozdzial:
+                        file.view_c(arguments);
+                        break;
+                    case dzial:
+                        file.view_d();
+                        break;
+                    default:
+                        throw  new IllegalArgumentException( " nie ustawiono wszystkich trybów");
+                }
+                break;
+            default:
+                throw  new IllegalArgumentException( " nie ustawiono wszystkich trybów");
+        }
     }
 }
