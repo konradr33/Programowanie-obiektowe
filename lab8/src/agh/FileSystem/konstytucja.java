@@ -193,9 +193,22 @@ public class Konstytucja implements FileToRead  {
         }
     }
 
-    public void view_b(){
+    public void view_b(String x){
+            String[] kom=x.split(" ");
 
+            for(int i=0;i<artykuly.size();i++){
+                if(artykuly.get(i).getID().equals(kom[0]+" "+kom[1])) {
+                    List<Node> temp =artykuly.get(i).getChildren();
+                    for(int j=0;j<temp.size();j++){
+                        if(temp.get(j).getID().equals(kom[3]))
+                            temp.get(j).view_a();
+
+                    }
+                }
+            }
+            throw  new IllegalArgumentException(x + " taki artykuł nie istnieje");
     }
+
 
     public void view_c(String x){
         int temp=-1;
@@ -208,7 +221,7 @@ public class Konstytucja implements FileToRead  {
 
 
 
-    public void view_d(){
+    public void view_d(String x){
         return;
     }
 

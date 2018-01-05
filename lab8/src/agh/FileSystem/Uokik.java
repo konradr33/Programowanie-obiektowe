@@ -131,22 +131,48 @@ public class Uokik implements FileToRead {
     }
 
     public void view_a(){
+        if(dzialy.isEmpty()) return;
+        for(int i=0;i<dzialy.size();i++){
+            dzialy.get(i).view_a();
+        }
     }
 
     public void view_a(String x){
+        for(int i=0;i<artykuly.size();i++){
+            if(artykuly.get(i).getID().equals(x)) {
+                artykuly.get(i).view_a();
+                return;
+            }
+        }
+        throw  new IllegalArgumentException(x + " taki artykuł nie istnieje");
     }
 
     public void view_a(String x,String y){
     }
 
-    public void view_b(){
+    public void view_b(String x){
+
     }
 
     public void view_c(String x){
+        int temp=-1;
+        if(rozdzialy.isEmpty()) return;
+        for(int i=0;i<rozdzialy.size();i++){
+            if(rozdzialy.get(i).getTitle().equals(x)){temp=rozdzialy.get(i).getIDInt();}
+            if(rozdzialy.get(i).getIDInt()==temp){ rozdzialy.get(i).view_a();}
+        }
     }
 
-    public void view_d(){
+
+    public void view_d(String x){
+        int temp=-1;
+        if(rozdzialy.isEmpty()) return;
+        for(int i=0;i<rozdzialy.size();i++){
+            if(rozdzialy.get(i).getTitle().equals(x)){temp=rozdzialy.get(i).getIDInt();}
+            if(rozdzialy.get(i).getIDInt()==temp){ rozdzialy.get(i).view_a();}
+        }
     }
+
 
     public boolean isUpper(String s) {
         for(char c : s.toCharArray()) {

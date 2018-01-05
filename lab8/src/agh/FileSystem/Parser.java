@@ -17,7 +17,7 @@ public class Parser {
             }
             switch (args[i]){
                 case("-h"):
-                    System.out.println("\n\n Pomoc: \n -f <x> - ścieżka do pliku \n -k - tryb wczytywania konstytucji \n -u tryb wczytywania uokik \n -r - wypisz treść \n -t - spis treści \n -a <x>|<x-y> - numer lub zakres artykułów, \n -b <x-y-z> - specyficzne elementy składowe artykułu \n -c <x> - numer rozdziału \n -d <x> - numer działu,\n Obowiązkowo trzeba wybrać rodzaj wykorzystywanego pliku!! \n");
+                    System.out.println("\n\n Pomoc: \n -f <x> - ścieżka do pliku \n -k - tryb wczytywania konstytucji \n -u tryb wczytywania uokik \n -r - wypisz treść \n -t - spis treści \n -a Art. x | Art. x. Art. y. - numer lub zakres artykułów, \n -b Art. x. ust y. - specyficzne elementy składowe artykułu \n -c <x> - numer rozdziału \n -d <x> - numer działu,\n Obowiązkowo trzeba wybrać rodzaj wykorzystywanego pliku!! \n");
                     return true;
 
                 case("-k"):
@@ -104,7 +104,12 @@ public class Parser {
                     }
                     displayMode=DisplayMode.dzial;
                     i++;
-                    arguments=args[i];
+                    arguments=arguments.concat(args[i]);
+                    while(!args[i].startsWith("-") && i<args.length-1){
+                        arguments=arguments.concat(" ");
+                        i++;
+                        arguments=arguments.concat(args[i]);
+                    }
                     break;
 
                 default:
@@ -161,13 +166,13 @@ public class Parser {
                         break;
 
                     case specyficzne:
-                        file.view_b();
+                        file.view_b(arguments);
                         break;
                     case rozdzial:
                         file.view_c(arguments);
                         break;
                     case dzial:
-                        file.view_d();
+                        file.view_d( arguments);
                         break;
                     default:
                         throw  new IllegalArgumentException( " nie ustawiono wszystkich trybów");

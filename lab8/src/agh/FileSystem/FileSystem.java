@@ -10,8 +10,7 @@ public class FileSystem {
             String line = keyboard.nextLine();
 
             Parser parser = new Parser();
-            //while(parser.parse(line.split(" "))){
-            while(parser.parse(args)){
+            while(parser.parse(line.split(" "))){
                 System.out.println("Wprowadź dane");
                 line = keyboard.nextLine();
             }

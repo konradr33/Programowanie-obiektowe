@@ -11,7 +11,7 @@ interface FileToRead  {
     void view_a();
     void view_a(String x);
     void view_a(String x,String y);
-    void view_b();
+    void view_b(String x);
     void view_c(String x);
-    void view_d();
+    void view_d(String x);
 }

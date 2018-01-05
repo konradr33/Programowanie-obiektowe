@@ -6,7 +6,7 @@ public class Node {
     public static int id;
     private  String title="";
     private  List<String[]> describtion = new ArrayList<String[]>();
-    private  List<String[]> content = new ArrayList<String[]>();
+    List<String[]> content = new ArrayList<String[]>();
     private List<Node> childrens = new ArrayList<Node>();
 
     public void addLine (String[] line){
