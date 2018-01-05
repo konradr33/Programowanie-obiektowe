@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="80cad03d-4c7a-47cc-b47c-368d1e13acdd" name="Default" comment="dodanie konstytucja">
       <change beforePath="$PROJECT_DIR$/../lab7/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../lab7/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/konstytucja.txt" afterPath="$PROJECT_DIR$/konstytucja.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab8/agh/FileSystem/CommandLine.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab8/agh/FileSystem/FileSystem.class" afterPath="$PROJECT_DIR$/out/production/lab8/agh/FileSystem/FileSystem.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab8/agh/FileSystem/IFile.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/CommandLine.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/File.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/FileSystem.java" afterPath="$PROJECT_DIR$/src/agh/FileSystem/FileSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/IFile.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/Parser.java" afterPath="$PROJECT_DIR$/src/agh/FileSystem/Parser.java" />
-      <change beforePath="$PROJECT_DIR$/src/agh/FileSystem/konstytucja.java" afterPath="$PROJECT_DIR$/src/agh/FileSystem/konstytucja.java" />
-      <change beforePath="$PROJECT_DIR$/uokik.txt" afterPath="$PROJECT_DIR$/uokik.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,8 +105,8 @@
       <file leaf-file-name="Konstytucja.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agh/FileSystem/Konstytucja.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+            <state relative-caret-position="231">
+              <caret line="12" column="56" lean-forward="true" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#316#326#0" expanded="true" />
@@ -397,7 +385,7 @@
       <workItem from="1512765236454" duration="183000" />
       <workItem from="1513357201666" duration="585000" />
       <workItem from="1514975885134" duration="2490000" />
-      <workItem from="1515114049323" duration="22949000" />
+      <workItem from="1515114049323" duration="23126000" />
     </task>
     <task id="LOCAL-00001" summary="dodanie konstytucja">
       <created>1512765374514</created>
@@ -406,15 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1512765374514</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dodanie konstytucja">
+      <created>1515138429233</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1515138429233</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34363000" />
+    <option name="totallyTimeSpent" value="34540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -430,7 +424,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -873,8 +867,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agh/FileSystem/Konstytucja.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+        <state relative-caret-position="231">
+          <caret line="12" column="56" lean-forward="true" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#316#326#0" expanded="true" />
