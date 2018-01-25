@@ -10,20 +10,12 @@ import java.util.ArrayList;
 
 public class ApiConnection {
 
-    public void makeConnection(String URL,String ApiKey) throws IOException {
+    public void makeConnection(URL url, CommandArguments arguments) throws IOException {
         //creating a connection
-        HttpURLConnection connection = (HttpURLConnection) new URL("https://airapi.airly.eu/v1/sensors/1").openConnection();
-
-        //declaring apiKey
-        String apiKey;
-        if (System.getenv("API_KEY") == null) {
-            apiKey = "b0f33c69d7a941d3ae48689a48f3d204";
-        } else {
-            apiKey = System.getenv("API_KEY");
-        }
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         //making headers
-        connection.setRequestProperty("apikey", apiKey);
+        connection.setRequestProperty("apikey", arguments.getApiKey());
         connection.setRequestProperty("Accept", "application/json");
 
         // handling error response code
@@ -33,10 +25,7 @@ public class ApiConnection {
             inputStream = connection.getInputStream();
         } else {
             inputStream = connection.getErrorStream();
-
         }
-
-        System.out.println(responseCode);//------------------------------<<<<<<
 
         //Reading response
         BufferedReader in = new BufferedReader(
@@ -50,8 +39,12 @@ public class ApiConnection {
         in.close();
         connection.disconnect();
 
-        for (String line : response) {
-            System.out.println(line);//------------------------------<<<<<<
+        //response error
+        if (responseCode != 200) throw new IOException(responseCode + "\n" + response);
+
+        String[] splitted = response.get(0).split(",");//------------------------------<<<<<<
+        for (String line : splitted) {
+            System.out.println(line);
         }
     }
 }

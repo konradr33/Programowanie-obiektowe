@@ -4,37 +4,41 @@ import java.util.regex.Pattern;
 
 public class ErrorSupport {
 
-    public void checkLength (String[] args){
-        if(args.length>11 || args.length<1){
+    public void checkLength(String[] args) {
+        if (args.length > 11 || args.length < 1) {
             throw new IllegalArgumentException("Invalid number of arguments, --help for more information about app syntax");
         }
     }
 
-    public void  checkApiKey (String arg){
+    public String checkApiKey(String arg) {
         boolean isIncorrect;
-        Pattern apiKeyPattern=Pattern.compile("(\\w)+");
+        Pattern apiKeyPattern = Pattern.compile("(\\w)+");
         isIncorrect = !apiKeyPattern.matcher(arg).matches();
-        if(isIncorrect){
+        if (isIncorrect) {
             throw new IllegalArgumentException("Invalid API Key, --help for more information about app syntax");
         }
+        return arg;
     }
 
-    public double checkIsDouble (String arg){
+    public double checkIsDouble(String arg) {
         boolean isIncorrect;
-        Pattern doublePattern=Pattern.compile("[0-9]+[.]?[0-9]*");
+        Pattern doublePattern = Pattern.compile("[0-9]+[.]?[0-9]*");
         isIncorrect = !doublePattern.matcher(arg).matches();
-        if(isIncorrect){
+        if (isIncorrect) {
             throw new IllegalArgumentException("Invalid double variable, --help for more information about app syntax");
         }
+        System.out.println(Double.parseDouble(arg));
         return Double.parseDouble(arg);
     }
-    public int checkIsInt (String arg){
+
+    public int checkIsInt(String arg) {
         boolean isIncorrect;
-        Pattern apiKeyPattern=Pattern.compile("[0-9]+");
+        Pattern apiKeyPattern = Pattern.compile("[0-9]+");
         isIncorrect = !apiKeyPattern.matcher(arg).matches();
-        if(isIncorrect){
+        if (isIncorrect) {
             throw new IllegalArgumentException("Invalid int variable, --help for more information about app syntax");
         }
+        System.out.println(Integer.parseInt(arg));
         return Integer.parseInt(arg);
     }
 }

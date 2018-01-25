@@ -1,13 +1,15 @@
 package agh.edu.pl;
 
 public class CommandLineParser {
-    public ApiArguments parse(String[] args){
-        ErrorSupport command=new ErrorSupport();
+    public CommandArguments parse(String[] args) {
+        //checking command line length
+        ErrorSupport command = new ErrorSupport();
         command.checkLength(args);
-        ApiArguments arguments = new ApiArguments();
 
-        for(int i=0;i<args.length;i++) {
-            if ((i == args.length -1 ) && !args[i].equals("--help")) {
+        //parsing arguments
+        CommandArguments arguments = new CommandArguments();
+        for (int i = 0; i < args.length; i++) {
+            if ((i == args.length - 1) && !args[i].equals("--help")) {
                 throw new IllegalArgumentException("Incorrect argument, --help for more information about app syntax");
             }
             switch (args[i]) {
@@ -28,17 +30,22 @@ public class CommandLineParser {
                     break;
                 case ("--apikey"):
                     i++;
-                    command.checkApiKey(args[i]);
-                    arguments.setApiKey(args[i]);
+                    arguments.setApiKey(command.checkApiKey(args[i]));
                     break;
                 case ("--history"):
                     i++;
                     arguments.setHistory(command.checkIsInt(args[i]));
-                    System.out.println("history");
                     break;
                 default:
                     throw new IllegalArgumentException("Incorrect argument, --help for more information about app syntax");
             }
+        }
+
+        //checking environment API_KEY if there was no apikey in command line entered
+        if (!arguments.hasApiKey() && System.getenv("API_KEY") == null) {
+            throw new IllegalArgumentException("No API Key found, check if you have entered the correct key or if there is a suitable environment variable ( API_KEY ), --help for more information about app syntax");
+        } else if (!arguments.hasApiKey()) {
+            arguments.setApiKey(command.checkApiKey(System.getenv("API_KEY")));
         }
         return arguments;
     }
