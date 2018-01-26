@@ -1,8 +1,8 @@
 package agh.edu.pl;
 
-public enum OperatingMode {
+public enum OperatingModeEnum {
     coordinates,
     coordinatesWithHistory,
     sensor,
-    sensorWithHistory
+    sensorWithHistory,
 }

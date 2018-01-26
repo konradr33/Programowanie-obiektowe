@@ -7,18 +7,22 @@ public class WeatherData {
     private List<TimeMeasurementsNode> history;
     private List<TimeMeasurementsNode> forecast;
 
-    public String toString() {
+    public String toString(CommandArguments arg) {
         StringBuilder string = new StringBuilder();
-        string.append("\n\n\nCurrent");
+        string.append("Current");
         string.append(currentMeasurements.toString());
-        string.append("\n\n\nhistory");
-        for (TimeMeasurementsNode node : history) {
-            string.append(node.toString());
+
+        OperatingModeSingleton mode=OperatingModeSingleton.getInstance();
+        if(mode.getMode()==OperatingModeEnum.coordinatesWithHistory || mode.getMode()==OperatingModeEnum.sensorWithHistory ){
+            this.addHistory(arg.getHistory(),string);
         }
-        string.append("\n\n\nforecast");
-        for (TimeMeasurementsNode node : forecast) {
-            string.append(node.toString());
-        }
+
         return string.toString();
+    }
+    private void addHistory(int history,StringBuilder string){
+        string.append("\n\n\nhistory");
+        for (int i=this.history.size()-1;i >= this.history.size()-history; i--) {
+            string.append(this.history.get(i).toString());
+        }
     }
 }

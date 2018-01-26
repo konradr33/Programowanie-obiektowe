@@ -11,12 +11,12 @@ import java.net.URL;
 
 public class ApiConnection {
 
-    public WeatherData makeConnection(URL url, CommandArguments arguments) throws IOException {
+    public WeatherData getWeatherData(URL url, String apiKey) throws IOException {
         //creating a connection
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         //making headers
-        connection.setRequestProperty("apikey", arguments.getApiKey());
+        connection.setRequestProperty("apikey", apiKey);
         connection.setRequestProperty("Accept", "application/json");
 
         // handling error response code
@@ -49,7 +49,6 @@ public class ApiConnection {
         //converting JSON to WeatherData
         Gson gson = new Gson();
         WeatherData data = gson.fromJson(response.toString(), WeatherData.class);
-        System.out.println(data.toString());
 
         return data;
     }

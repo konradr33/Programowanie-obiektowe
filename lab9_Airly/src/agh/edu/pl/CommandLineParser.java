@@ -26,7 +26,7 @@ public class CommandLineParser {
                     break;
                 case ("--sensorid"):
                     i++;
-                    arguments.setSendorId(command.checkIsInt(args[i]));
+                    arguments.setSensorId(command.checkIsInt(args[i]));
                     break;
                 case ("--apikey"):
                     i++;
