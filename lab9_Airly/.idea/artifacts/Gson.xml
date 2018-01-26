@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Gson">
+    <output-path>$PROJECT_DIR$/out/artifacts/Gson</output-path>
+    <root id="archive" name="Gson.jar" />
+  </artifact>
+</component>

@@ -1,16 +1,17 @@
 package agh.edu.pl;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class ApiConnection {
 
-    public void makeConnection(URL url, CommandArguments arguments) throws IOException {
+    public WeatherData makeConnection(URL url, CommandArguments arguments) throws IOException {
         //creating a connection
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -27,24 +28,29 @@ public class ApiConnection {
             inputStream = connection.getErrorStream();
         }
 
+        if (inputStream == null) throw new IOException("Error code: " + responseCode + ", null response");
+
         //Reading response
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         inputStream));
 
-        ArrayList<String> response = new ArrayList();
+        StringBuilder response = new StringBuilder();
         String currentLine;
         while ((currentLine = in.readLine()) != null)
-            response.add(currentLine);
+            response.append(currentLine);
         in.close();
         connection.disconnect();
+
 
         //response error
         if (responseCode != 200) throw new IOException(responseCode + "\n" + response);
 
-        String[] splitted = response.get(0).split(",");//------------------------------<<<<<<
-        for (String line : splitted) {
-            System.out.println(line);
-        }
+        //converting JSON to WeatherData
+        Gson gson = new Gson();
+        WeatherData data = gson.fromJson(response.toString(), WeatherData.class);
+        System.out.println(data.toString());
+
+        return data;
     }
 }

@@ -27,7 +27,6 @@ public class ErrorSupport {
         if (isIncorrect) {
             throw new IllegalArgumentException("Invalid double variable, --help for more information about app syntax");
         }
-        System.out.println(Double.parseDouble(arg));
         return Double.parseDouble(arg);
     }
 
@@ -38,7 +37,6 @@ public class ErrorSupport {
         if (isIncorrect) {
             throw new IllegalArgumentException("Invalid int variable, --help for more information about app syntax");
         }
-        System.out.println(Integer.parseInt(arg));
         return Integer.parseInt(arg);
     }
 }
