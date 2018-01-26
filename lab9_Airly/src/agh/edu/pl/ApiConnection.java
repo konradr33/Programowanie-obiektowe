@@ -49,6 +49,7 @@ public class ApiConnection {
         //converting JSON to WeatherData
         Gson gson = new Gson();
         WeatherData data = gson.fromJson(response.toString(), WeatherData.class);
+        data.checkErrors();
 
         return data;
     }

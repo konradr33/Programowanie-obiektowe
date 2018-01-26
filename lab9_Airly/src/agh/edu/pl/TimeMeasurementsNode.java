@@ -6,7 +6,11 @@ public class TimeMeasurementsNode {
     private Measurements measurements;
 
     //proper displaying content
-    public String toString() {
-        return "\nfromDateTime: " + fromDateTime + "\ntillDateTime: " + tillDateTime + measurements.toString() + "\n";
+    public void display() {
+        String date=fromDateTime.substring(0,10);
+        String startHour=fromDateTime.substring(11,16);
+        String endHour=tillDateTime.substring(11,16);
+        System.out.println( "Day: "+date+"\nHour: "+startHour+"-"+endHour );
+        measurements.display();
     }
 }
