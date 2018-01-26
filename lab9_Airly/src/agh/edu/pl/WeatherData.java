@@ -20,19 +20,18 @@ public class WeatherData {
     }
     //convert content to String
     public void display(CommandArguments arg) {
-        System.out.println("CURRENT");
+        System.out.println("\nCURRENT");
         currentMeasurements.display();
-        System.out.println(Visualalizer.wall);
         OperatingModeSingleton mode=OperatingModeSingleton.getInstance();
         if(mode.getMode()==OperatingModeEnum.coordinatesWithHistory || mode.getMode()==OperatingModeEnum.sensorWithHistory ){
             this.addHistory(arg.getHistory());
         }
-
     }
 
     //if history argument is applied, display proper number of history data
     private void addHistory(int history){
-        System.out.println("HISTORY");
+        System.out.println(Visualalizer.wall);
+        System.out.println("HISTORY\n");
         for (int i=this.history.size()-1;i >= this.history.size()-history; i--) {
             this.history.get(i).display();
         }

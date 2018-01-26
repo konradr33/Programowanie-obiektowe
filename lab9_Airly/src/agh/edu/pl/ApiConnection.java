@@ -22,7 +22,7 @@ public class ApiConnection {
         // handling error response code
         int responseCode = connection.getResponseCode();
         InputStream inputStream;
-        if (responseCode==200) {
+        if (responseCode == 200) {
             inputStream = connection.getInputStream();
         } else {
             inputStream = connection.getErrorStream();
@@ -44,7 +44,7 @@ public class ApiConnection {
 
 
         //response error
-        if (responseCode != 200) throw new IOException("Error code: "+responseCode + ", " + response);
+        if (responseCode != 200) throw new IOException("Error code: " + responseCode + ", " + response);
 
         //converting JSON to WeatherData
         Gson gson = new Gson();

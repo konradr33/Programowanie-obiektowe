@@ -1,5 +1,7 @@
 package agh.edu.pl;
 
+import java.text.DecimalFormat;
+
 public class Measurements {
     private double airQualityIndex = -200;
     private double pm1 = -200;
@@ -26,28 +28,29 @@ public class Measurements {
                     break;
                 case 3:
                     if (pm25 == -200) {
-                        string.append("PM2.5: -- μg/m3\n");
+                        string.append("PM2.5: -- \u03BCg/m3\n");
                     } else {
-                        string.append("PM2.5: " + (int) pm25 + " μg/m3\n");
+                        string.append("PM2.5: " + (int) pm25 + " \u03BCg/m3\n");
                     }
                     break;
                 case 5:
                     if (pm10 == -200) {
-                        string.append("PM10: -- μg/m3\n");
+                        string.append("PM10: -- \u03BCg/m3\n");
                     } else {
-                        string.append("PM10: " + (int) pm10 + " μg/m3\n");
+                        string.append("PM10: " + (int) pm10 + " \u03BCg/m3\n");
                     }
                     break;
                 case 7:
                     if (temperature == -200) {
                         string.append("temperature: -- °C\n");
                     } else {
-                        string.append("temperature: " + Math.round(temperature) + "°C\n");
+                        DecimalFormat df = new DecimalFormat("#.#");
+                        string.append("temperature: " + df.format(temperature) + "°C\n");
                     }
                     break;
                 case 9:
                     if (pressure == -200) {
-                        string.append("press: -- hPa\n");
+                        string.append("pressure: -- hPa\n");
                     } else {
                         string.append("pressure: " + (int) pressure / 100 + " hPa\n");
                     }

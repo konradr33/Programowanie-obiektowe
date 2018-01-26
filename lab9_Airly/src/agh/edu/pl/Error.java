@@ -5,7 +5,7 @@ public class Error {
     private String message;
 
     //handle errors
-    public void display(){
-        System.out.println("code: "+code+", message: "+message);
+    public void display() {
+        System.out.println("code: " + code + ", message: " + message);
     }
 }

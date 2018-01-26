@@ -7,10 +7,10 @@ public class TimeMeasurementsNode {
 
     //proper displaying content
     public void display() {
-        String date=fromDateTime.substring(0,10);
-        String startHour=fromDateTime.substring(11,16);
-        String endHour=tillDateTime.substring(11,16);
-        System.out.println( "Day: "+date+"\nHour: "+startHour+"-"+endHour );
+        String date = fromDateTime.substring(0, 10);
+        String startHour = fromDateTime.substring(11, 16);
+        String endHour = tillDateTime.substring(11, 16);
+        System.out.println("Day: " + date + "\nHour: " + startHour + "-" + endHour);
         measurements.display();
     }
 }
