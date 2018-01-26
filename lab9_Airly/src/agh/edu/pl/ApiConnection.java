@@ -17,7 +17,7 @@ public class ApiConnection {
 
         //making headers
         connection.setRequestProperty("apikey", apiKey);
-        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("accept", "application/json");
 
         // handling error response code
         int responseCode = connection.getResponseCode();
@@ -41,7 +41,6 @@ public class ApiConnection {
             response.append(currentLine);
         in.close();
         connection.disconnect();
-
 
         //response error
         if (responseCode != 200) throw new IOException("Error code: " + responseCode + ", " + response);
