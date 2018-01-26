@@ -19,7 +19,7 @@ public class Airly {
 
             //making connection and getting data
             ApiConnection connection = new ApiConnection();
-            WeatherData data=connection.getWeatherData(url, arguments.getApiKey());
+            WeatherData data = connection.getWeatherData(url, arguments.getApiKey());
             System.out.println(data.toString(arguments));
 
         } catch (MalformedURLException ex) {

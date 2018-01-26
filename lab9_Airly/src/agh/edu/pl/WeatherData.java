@@ -7,6 +7,7 @@ public class WeatherData {
     private List<TimeMeasurementsNode> history;
     private List<TimeMeasurementsNode> forecast;
 
+    //convert content to String
     public String toString(CommandArguments arg) {
         StringBuilder string = new StringBuilder();
         string.append("Current");
@@ -19,6 +20,8 @@ public class WeatherData {
 
         return string.toString();
     }
+
+    //if history argument is applied, display proper number of history data
     private void addHistory(int history,StringBuilder string){
         string.append("\n\n\nhistory");
         for (int i=this.history.size()-1;i >= this.history.size()-history; i--) {

@@ -14,7 +14,7 @@ public class CommandLineParser {
             }
             switch (args[i]) {
                 case ("--help"):
-                    System.out.println("help menu");
+                    System.out.println("\nHELP MENU \nAvailable options and arguments: \n \t--latitude x \t-enter latitude coordinate \n \t--longitude x\t-enter longitude coordinate \n \t--sensorid x \t-enter sensor's Id \n \t--apikey x \t\t-enter API key \n \t--history x \t-enter number of hours to display from history data\n");
                     System.exit(0);
                 case ("--latitude"):
                     i++;
@@ -37,7 +37,7 @@ public class CommandLineParser {
                     arguments.setHistory(command.checkIsInt(args[i]));
                     break;
                 default:
-                    throw new IllegalArgumentException("Incorrect argument, --help for more information about app syntax");
+                    throw new IllegalArgumentException("Incorrect option, --help for more information about app syntax");
             }
         }
 

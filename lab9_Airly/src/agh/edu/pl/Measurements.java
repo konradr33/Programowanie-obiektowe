@@ -10,6 +10,7 @@ public class Measurements {
     private double temperature;
     private int pollutionLevel;
 
+    //proper displaying content
     public String toString() {
         return "\nairQualityIndex: " + airQualityIndex + "\npm1: " + pm1 + "\npm25: " + pm25 + "\npm10: " + pm10 + "\npressure: " + pressure + "\nhumidity: " + humidity + "\ntemperature: " + temperature + "\npollutionLevel: " + pollutionLevel;
     }

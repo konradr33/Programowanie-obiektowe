@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class URLCreator {
+
+    //creating URL from applied command arguments
     public URL createURl(CommandArguments arguments) throws MalformedURLException {
         OperatingModeSingleton mode = OperatingModeSingleton.getInstance();
         StringBuilder url = new StringBuilder();
@@ -24,7 +26,6 @@ public class URLCreator {
                 break;
         }
 
-        URL toReturn = new URL(url.toString());
-        return toReturn;
+        return new URL(url.toString());
     }
 }
